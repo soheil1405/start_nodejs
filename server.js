@@ -1,6 +1,6 @@
 const express = require('express');
 require('dotenv').config();
-const config = require('./config');
+
 global.config = require('./config');
 // const { check , validationResult } = require('express-validator');
 
@@ -9,6 +9,8 @@ const coockieParser = require('cookie-parser');
 
 const session = require('express-session');
 const flash = require('connect-flash');
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://127.0.0.1:27017/nodetest' , {userNewUrlParser : true , userUnifiedTopology:true});
 
 const app = express();
 

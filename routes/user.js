@@ -42,9 +42,12 @@ router.get('/:id' , (req , res)=>{
     //      });
     // }
 
-    
-    console.log(req.flash('msg'));
 
+    if (!user){
+        req.flash("msg" , 'کاربر یافت نشد');
+        return res.redirect('/user/')
+    }
+    
     return res.render('user' , {user ,  msg : req.flash('msg')} );
 
 });
@@ -65,7 +68,7 @@ router.post('/save' ,
     //     return res.status(422).json(errors.array());
     // }
 
-    console.log(req.body);
+    
     users.push(req.body);
     // res.json({
     //     massage : "user added successfully" ,
